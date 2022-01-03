@@ -5,6 +5,12 @@ just messing around and learning more CMake
 
 # Build
 
+* First recursively clone the repo
+
+```
+$ git clone --recursive git@github.com:ghendersonnc/somegl.git
+```
+
 ## Windows
 * Make sure `CMake/bin` is in PATH
 * run build_windows.bat from root directory (folder with CMakeLists)  
