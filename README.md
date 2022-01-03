@@ -8,7 +8,7 @@ just messing around and learning more CMake
 * First recursively clone the repo
 
 ```
-$ git clone --recursive git@github.com:ghendersonnc/somegl.git
+$ git clone --recursive https://github.com/ghendersonnc/somegl.git
 ```
 
 ## Windows
