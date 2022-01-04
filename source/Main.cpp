@@ -8,20 +8,33 @@ int main() {
     GLFWwindow* window;
 
     if( !glfwInit() ) {
-        fprintf( stderr, "Failed to initialize GLFW\n" );
+        std::cerr << "Failed to initialize GLFW\n" << std::endl;
         exit( EXIT_FAILURE );
     }
 
     window = glfwCreateWindow( 300, 300, "CMAKE IS NEAT", NULL, NULL );
 
     if (!window) {
-        fprintf( stderr, "Failed to open GLFW window\n" );
+        std::cerr << "Failed to open GLFW window" << std::endl;
         glfwTerminate();
         exit( EXIT_FAILURE );
     }
     glfwMakeContextCurrent(window);
 
-    gladLoadGL();
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
+        std::cout << "Failed to initialize OpenGL context" << std::endl;
+        return -1;
+    }
+
+    {
+        int MAJOR_VERSION;
+        int MINOR_VERSION;
+
+        glGetIntegerv(GL_MAJOR_VERSION, &MAJOR_VERSION);
+        glGetIntegerv(GL_MINOR_VERSION, &MINOR_VERSION);
+
+        std::cout << "OpenGL Version " << MAJOR_VERSION << "." << MINOR_VERSION << std::endl;
+    }
 
     while( !glfwWindowShouldClose(window) ) {
 
